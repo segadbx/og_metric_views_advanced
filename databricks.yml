@@ -1,0 +1,59 @@
+bundle:
+  name: finance_gl_metrics
+
+resources:
+  jobs:
+    deploy_all:
+      name: "Finance GL Metrics - Deploy All"
+      max_concurrent_runs: 1
+      parameters:
+        - name: catalog
+          default: ${var.catalog}
+      tasks:
+        - task_key: setup_catalog
+          notebook_task:
+            notebook_path: ./src/01_setup.sql
+
+        - task_key: create_dimensions
+          depends_on:
+            - task_key: setup_catalog
+          notebook_task:
+            notebook_path: ./src/02_dimensions.sql
+
+        - task_key: generate_data
+          depends_on:
+            - task_key: create_dimensions
+          notebook_task:
+            notebook_path: ./src/03_generate_journal_entries.py
+
+        - task_key: create_metric_views_core
+          depends_on:
+            - task_key: generate_data
+          notebook_task:
+            notebook_path: ./src/04_metric_views_core.sql
+
+        - task_key: create_metric_views_advanced
+          depends_on:
+            - task_key: create_metric_views_core
+          notebook_task:
+            notebook_path: ./src/05_metric_views_advanced.sql
+
+  dashboards:
+    finance_explorer:
+      display_name: "Finance GL Drill-Down Explorer"
+      file_path: ./src/dashboard.lvdash.json
+      warehouse_id: ${var.warehouse_id}
+      dataset_catalog: ${var.catalog}
+
+variables:
+  catalog:
+    description: "Catalog name for GL reporting schema (required)"
+  warehouse_id:
+    description: "SQL Warehouse ID for dashboard queries"
+
+targets:
+  dev:
+    mode: development
+    default: true
+  prod:
+    mode: production

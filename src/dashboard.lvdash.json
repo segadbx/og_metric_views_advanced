@@ -1,0 +1,2927 @@
+{
+  "datasets": [
+    {
+      "name": "mv_financial_rollup",
+      "displayName": "Financial Rollup",
+      "asset_name": "gl_reporting.mv_financial_rollup"
+    }
+  ],
+  "pages": [
+    {
+      "name": "6e6d0983",
+      "displayName": "Company Overview",
+      "layout": [
+        {
+          "widget": {
+            "name": "header",
+            "multilineTextboxSpec": {
+              "lines": [
+                "## Company Financial Overview\n",
+                "Drill into business units and account groups. Use the filters to slice by fiscal period."
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "kpi_actual",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "measure(Actual Amount)",
+                      "expression": "MEASURE(`Actual Amount`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Total Actual"
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "measure(Actual Amount)",
+                  "rowNumber": 0
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "kpi_budget",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "measure(Budget Amount)",
+                      "expression": "MEASURE(`Budget Amount`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Total Budget"
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "measure(Budget Amount)",
+                  "rowNumber": 0
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 1,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "kpi_variance_pct",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "measure(Variance Pct)",
+                      "expression": "MEASURE(`Variance Pct`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Variance %"
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "measure(Variance Pct)",
+                  "rowNumber": 0
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 1,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "kpi_txn_count",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "measure(Transaction Count)",
+                      "expression": "MEASURE(`Transaction Count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Transaction Count"
+              },
+              "version": 2,
+              "widgetType": "counter",
+              "encodings": {
+                "value": {
+                  "fieldName": "measure(Transaction Count)",
+                  "rowNumber": 0
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 9,
+            "y": 1,
+            "width": 3,
+            "height": 2
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_fy",
+            "queries": [
+              {
+                "name": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Year",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Fiscal Year",
+                      "expression": "`Fiscal Year`"
+                    },
+                    {
+                      "name": "Fiscal Year_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Fiscal Year"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "Fiscal Year",
+                    "queryName": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Year"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 3,
+            "width": 3,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_fq",
+            "queries": [
+              {
+                "name": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Quarter",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Fiscal Quarter",
+                      "expression": "`Fiscal Quarter`"
+                    },
+                    {
+                      "name": "Fiscal Quarter_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Fiscal Quarter"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "Fiscal Quarter",
+                    "queryName": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Quarter"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 3,
+            "width": 3,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_bu",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Business Unit",
+                      "expression": "`Business Unit`"
+                    },
+                    {
+                      "name": "measure(Actual Amount)",
+                      "expression": "MEASURE(`Actual Amount`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Actual Spend by Business Unit"
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Business Unit",
+                  "displayName": "Business Unit",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Actual Amount)",
+                  "displayName": "Actual Amount",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Business Unit",
+                  "displayName": "Business Unit",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 4,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_acctgrp",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Account Group",
+                      "expression": "`Account Group`"
+                    },
+                    {
+                      "name": "measure(Actual Amount)",
+                      "expression": "MEASURE(`Actual Amount`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Actual Spend by Account Group"
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Account Group",
+                  "displayName": "Account Group",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Actual Amount)",
+                  "displayName": "Actual Amount",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Account Group",
+                  "displayName": "Account Group",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 4,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "line_monthly",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Business Unit",
+                      "expression": "`Business Unit`"
+                    },
+                    {
+                      "name": "monthly(Posting Month)",
+                      "expression": "DATE_TRUNC(\"MONTH\", `Posting Month`)"
+                    },
+                    {
+                      "name": "measure(Actual Amount)",
+                      "expression": "MEASURE(`Actual Amount`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Monthly Spend Trend"
+              },
+              "version": 3,
+              "widgetType": "line",
+              "encodings": {
+                "x": {
+                  "fieldName": "monthly(Posting Month)",
+                  "displayName": "Month",
+                  "scale": {
+                    "type": "temporal"
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Actual Amount)",
+                  "displayName": "Actual Amount",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Business Unit",
+                  "displayName": "Business Unit",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 10,
+            "width": 12,
+            "height": 5
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "org_drilldown",
+      "displayName": "Organizational Drill-Down",
+      "layout": [
+        {
+          "widget": {
+            "name": "header",
+            "multilineTextboxSpec": {
+              "lines": [
+                "## Business Unit → Region → Cost Center\n",
+                "Click a bar to cross-filter the detail table below. Drill from business unit totals down to individual cost centers."
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_fy",
+            "queries": [
+              {
+                "name": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Year",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Fiscal Year",
+                      "expression": "`Fiscal Year`"
+                    },
+                    {
+                      "name": "Fiscal Year_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Fiscal Year"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "Fiscal Year",
+                    "queryName": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Year"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 3,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_fq",
+            "queries": [
+              {
+                "name": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Quarter",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Fiscal Quarter",
+                      "expression": "`Fiscal Quarter`"
+                    },
+                    {
+                      "name": "Fiscal Quarter_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Fiscal Quarter"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "Fiscal Quarter",
+                    "queryName": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Quarter"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 1,
+            "width": 3,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_bu",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Business Unit",
+                      "expression": "`Business Unit`"
+                    },
+                    {
+                      "name": "measure(Actual Amount)",
+                      "expression": "MEASURE(`Actual Amount`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Actual vs Budget by Business Unit"
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Business Unit",
+                  "displayName": "Business Unit",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Actual Amount)",
+                  "displayName": "Actual Amount",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Business Unit",
+                  "displayName": "Business Unit",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 12,
+            "height": 5
+          }
+        },
+        {
+          "widget": {
+            "name": "table_detail",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Business Unit",
+                      "expression": "`Business Unit`"
+                    },
+                    {
+                      "name": "Operating Region",
+                      "expression": "`Operating Region`"
+                    },
+                    {
+                      "name": "Cost Center",
+                      "expression": "`Cost Center`"
+                    },
+                    {
+                      "name": "measure(Actual Amount)",
+                      "expression": "MEASURE(`Actual Amount`)"
+                    },
+                    {
+                      "name": "measure(Budget Amount)",
+                      "expression": "MEASURE(`Budget Amount`)"
+                    },
+                    {
+                      "name": "measure(Variance)",
+                      "expression": "MEASURE(`Variance`)"
+                    },
+                    {
+                      "name": "measure(Variance Pct)",
+                      "expression": "MEASURE(`Variance Pct`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Regional Cost Center Detail"
+              },
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "Business Unit"
+                  },
+                  {
+                    "fieldName": "Operating Region"
+                  },
+                  {
+                    "fieldName": "Cost Center"
+                  },
+                  {
+                    "fieldName": "measure(Actual Amount)"
+                  },
+                  {
+                    "fieldName": "measure(Budget Amount)"
+                  },
+                  {
+                    "fieldName": "measure(Variance)"
+                  },
+                  {
+                    "fieldName": "measure(Variance Pct)"
+                  }
+                ]
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 7,
+            "width": 12,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_region",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Business Unit",
+                      "expression": "`Business Unit`"
+                    },
+                    {
+                      "name": "Operating Region",
+                      "expression": "`Operating Region`"
+                    },
+                    {
+                      "name": "measure(Actual Amount)",
+                      "expression": "MEASURE(`Actual Amount`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Spend by Region"
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Operating Region",
+                  "displayName": "Operating Region",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Actual Amount)",
+                  "displayName": "Actual Amount",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Business Unit",
+                  "displayName": "Business Unit",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 14,
+            "width": 12,
+            "height": 5
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "financial_drilldown",
+      "displayName": "Financial Statement Drill-Down",
+      "layout": [
+        {
+          "widget": {
+            "name": "header",
+            "multilineTextboxSpec": {
+              "lines": [
+                "## Report Section → Line Format → Account Group → Account\n",
+                "Drill from the income statement structure down to individual GL accounts. Click chart segments to cross-filter the detail table."
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_fy",
+            "queries": [
+              {
+                "name": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Year",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Fiscal Year",
+                      "expression": "`Fiscal Year`"
+                    },
+                    {
+                      "name": "Fiscal Year_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Fiscal Year"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "Fiscal Year",
+                    "queryName": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Year"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 3,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_bu",
+            "queries": [
+              {
+                "name": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Business Unit",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Business Unit",
+                      "expression": "`Business Unit`"
+                    },
+                    {
+                      "name": "Business Unit_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Business Unit"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "Business Unit",
+                    "queryName": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Business Unit"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 1,
+            "width": 3,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_section",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Line Format",
+                      "expression": "`Line Format`"
+                    },
+                    {
+                      "name": "Report Section",
+                      "expression": "`Report Section`"
+                    },
+                    {
+                      "name": "measure(Actual Amount)",
+                      "expression": "MEASURE(`Actual Amount`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Spend by Report Section"
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Report Section",
+                  "displayName": "Report Section",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Actual Amount)",
+                  "displayName": "Actual Amount",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Line Format",
+                  "displayName": "Line Format",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_acctgrp",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Report Section",
+                      "expression": "`Report Section`"
+                    },
+                    {
+                      "name": "Account Group",
+                      "expression": "`Account Group`"
+                    },
+                    {
+                      "name": "measure(Actual Amount)",
+                      "expression": "MEASURE(`Actual Amount`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Spend by Account Group"
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Account Group",
+                  "displayName": "Account Group",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Actual Amount)",
+                  "displayName": "Actual Amount",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Report Section",
+                  "displayName": "Report Section",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 2,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "table_detail",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Report Section",
+                      "expression": "`Report Section`"
+                    },
+                    {
+                      "name": "Line Format",
+                      "expression": "`Line Format`"
+                    },
+                    {
+                      "name": "Account Group",
+                      "expression": "`Account Group`"
+                    },
+                    {
+                      "name": "Account Category",
+                      "expression": "`Account Category`"
+                    },
+                    {
+                      "name": "Account Name",
+                      "expression": "`Account Name`"
+                    },
+                    {
+                      "name": "measure(Actual Amount)",
+                      "expression": "MEASURE(`Actual Amount`)"
+                    },
+                    {
+                      "name": "measure(Budget Amount)",
+                      "expression": "MEASURE(`Budget Amount`)"
+                    },
+                    {
+                      "name": "measure(Variance Pct)",
+                      "expression": "MEASURE(`Variance Pct`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Account Detail Table"
+              },
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "Report Section"
+                  },
+                  {
+                    "fieldName": "Line Format"
+                  },
+                  {
+                    "fieldName": "Account Group"
+                  },
+                  {
+                    "fieldName": "Account Category"
+                  },
+                  {
+                    "fieldName": "Account Name"
+                  },
+                  {
+                    "fieldName": "measure(Actual Amount)"
+                  },
+                  {
+                    "fieldName": "measure(Budget Amount)"
+                  },
+                  {
+                    "fieldName": "measure(Variance Pct)"
+                  }
+                ]
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 8,
+            "width": 12,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "pivot_acct",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Account Category",
+                      "expression": "`Account Category`"
+                    },
+                    {
+                      "name": "Fiscal Quarter",
+                      "expression": "`Fiscal Quarter`"
+                    },
+                    {
+                      "name": "measure(Actual Amount)",
+                      "expression": "MEASURE(`Actual Amount`)"
+                    }
+                  ],
+                  "cubeGroupingSets": {
+                    "sets": [
+                      {
+                        "fieldNames": [
+                          "Account Category"
+                        ]
+                      },
+                      {
+                        "fieldNames": [
+                          "Fiscal Quarter"
+                        ]
+                      }
+                    ]
+                  },
+                  "disaggregated": false,
+                  "orders": [
+                    {
+                      "direction": "ASC",
+                      "expression": "`Account Category`"
+                    },
+                    {
+                      "direction": "ASC",
+                      "expression": "`Fiscal Quarter`"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Spend by Account Category"
+              },
+              "version": 3,
+              "widgetType": "pivot",
+              "encodings": {
+                "rows": [
+                  {
+                    "fieldName": "Account Category"
+                  }
+                ],
+                "columns": [
+                  {
+                    "fieldName": "Fiscal Quarter"
+                  }
+                ],
+                "cell": {
+                  "type": "single-cell",
+                  "fieldName": "measure(Actual Amount)",
+                  "cellType": "text"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 15,
+            "width": 12,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "variance_analysis",
+      "displayName": "Budget Variance Analysis",
+      "layout": [
+        {
+          "widget": {
+            "name": "header",
+            "multilineTextboxSpec": {
+              "lines": [
+                "## Budget Variance Deep Dive\n",
+                "Positive variance = under budget (favorable). Negative = over budget. Use filters to isolate business units and periods, then click bars to cross-filter the detail table."
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_fy",
+            "queries": [
+              {
+                "name": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Year",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Fiscal Year",
+                      "expression": "`Fiscal Year`"
+                    },
+                    {
+                      "name": "Fiscal Year_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Fiscal Year"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "Fiscal Year",
+                    "queryName": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Year"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 3,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_fq",
+            "queries": [
+              {
+                "name": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Quarter",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Fiscal Quarter",
+                      "expression": "`Fiscal Quarter`"
+                    },
+                    {
+                      "name": "Fiscal Quarter_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Fiscal Quarter"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "Fiscal Quarter",
+                    "queryName": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Quarter"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 1,
+            "width": 3,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_bu",
+            "queries": [
+              {
+                "name": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Business Unit",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Business Unit",
+                      "expression": "`Business Unit`"
+                    },
+                    {
+                      "name": "Business Unit_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Business Unit"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "Business Unit",
+                    "queryName": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Business Unit"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 1,
+            "width": 3,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_variance",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Account Group",
+                      "expression": "`Account Group`"
+                    },
+                    {
+                      "name": "measure(Variance)",
+                      "expression": "MEASURE(`Variance`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Variance by Account Group"
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Account Group",
+                  "displayName": "Account Group",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Variance)",
+                  "displayName": "Variance",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Account Group",
+                  "displayName": "Account Group",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_var_pct",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Account Group",
+                      "expression": "`Account Group`"
+                    },
+                    {
+                      "name": "Business Unit",
+                      "expression": "`Business Unit`"
+                    },
+                    {
+                      "name": "measure(Variance Pct)",
+                      "expression": "MEASURE(`Variance Pct`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Variance % by Business Unit"
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Business Unit",
+                  "displayName": "Business Unit",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Variance Pct)",
+                  "displayName": "Variance Pct",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Account Group",
+                  "displayName": "Account Group",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 2,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "table_variance",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Account Group",
+                      "expression": "`Account Group`"
+                    },
+                    {
+                      "name": "Account Category",
+                      "expression": "`Account Category`"
+                    },
+                    {
+                      "name": "measure(Actual Amount)",
+                      "expression": "MEASURE(`Actual Amount`)"
+                    },
+                    {
+                      "name": "measure(Budget Amount)",
+                      "expression": "MEASURE(`Budget Amount`)"
+                    },
+                    {
+                      "name": "measure(Variance)",
+                      "expression": "MEASURE(`Variance`)"
+                    },
+                    {
+                      "name": "measure(Variance Pct)",
+                      "expression": "MEASURE(`Variance Pct`)"
+                    },
+                    {
+                      "name": "measure(Transaction Count)",
+                      "expression": "MEASURE(`Transaction Count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Variance Detail by Account Category"
+              },
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "Account Group"
+                  },
+                  {
+                    "fieldName": "Account Category"
+                  },
+                  {
+                    "fieldName": "measure(Actual Amount)"
+                  },
+                  {
+                    "fieldName": "measure(Budget Amount)"
+                  },
+                  {
+                    "fieldName": "measure(Variance)"
+                  },
+                  {
+                    "fieldName": "measure(Variance Pct)"
+                  },
+                  {
+                    "fieldName": "measure(Transaction Count)"
+                  }
+                ]
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 8,
+            "width": 12,
+            "height": 7
+          }
+        },
+        {
+          "widget": {
+            "name": "pivot_variance",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Account Group",
+                      "expression": "`Account Group`"
+                    },
+                    {
+                      "name": "Fiscal Quarter",
+                      "expression": "`Fiscal Quarter`"
+                    },
+                    {
+                      "name": "measure(Variance)",
+                      "expression": "MEASURE(`Variance`)"
+                    }
+                  ],
+                  "cubeGroupingSets": {
+                    "sets": [
+                      {
+                        "fieldNames": [
+                          "Account Group"
+                        ]
+                      },
+                      {
+                        "fieldNames": [
+                          "Fiscal Quarter"
+                        ]
+                      }
+                    ]
+                  },
+                  "disaggregated": false,
+                  "orders": [
+                    {
+                      "direction": "ASC",
+                      "expression": "`Account Group`"
+                    },
+                    {
+                      "direction": "ASC",
+                      "expression": "`Fiscal Quarter`"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Variance by Quarter and Account Group"
+              },
+              "version": 3,
+              "widgetType": "pivot",
+              "encodings": {
+                "rows": [
+                  {
+                    "fieldName": "Account Group"
+                  }
+                ],
+                "columns": [
+                  {
+                    "fieldName": "Fiscal Quarter"
+                  }
+                ],
+                "cell": {
+                  "type": "single-cell",
+                  "fieldName": "measure(Variance)",
+                  "cellType": "text"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 15,
+            "width": 12,
+            "height": 5
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "financial_stmt",
+      "displayName": "Financial Statement Drill-Down",
+      "layout": [
+        {
+          "widget": {
+            "name": "header",
+            "multilineTextboxSpec": {
+              "lines": [
+                "## Report Section → Line Format → Account → Account Name\n",
+                "Drill from income statement sections down to individual GL accounts. Click a bar to cross-filter the detail table."
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_fy",
+            "queries": [
+              {
+                "name": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Year",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Fiscal Year",
+                      "expression": "`Fiscal Year`"
+                    },
+                    {
+                      "name": "Fiscal Year_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Fiscal Year"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "Fiscal Year",
+                    "queryName": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Year"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 3,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_fq",
+            "queries": [
+              {
+                "name": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Quarter",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Fiscal Quarter",
+                      "expression": "`Fiscal Quarter`"
+                    },
+                    {
+                      "name": "Fiscal Quarter_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Fiscal Quarter"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "Fiscal Quarter",
+                    "queryName": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Quarter"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 1,
+            "width": 3,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_section",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Report Section",
+                      "expression": "`Report Section`"
+                    },
+                    {
+                      "name": "measure(Actual Amount)",
+                      "expression": "MEASURE(`Actual Amount`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Actual by Report Section"
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Report Section",
+                  "displayName": "Report Section",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Actual Amount)",
+                  "displayName": "Actual Amount",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Report Section",
+                  "displayName": "Report Section",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 1,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_lineformat",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Report Section",
+                      "expression": "`Report Section`"
+                    },
+                    {
+                      "name": "Line Format",
+                      "expression": "`Line Format`"
+                    },
+                    {
+                      "name": "measure(Actual Amount)",
+                      "expression": "MEASURE(`Actual Amount`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Actual by Line Format"
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Line Format",
+                  "displayName": "Line Format",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Actual Amount)",
+                  "displayName": "Actual Amount",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Report Section",
+                  "displayName": "Report Section",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "table_detail",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Report Section",
+                      "expression": "`Report Section`"
+                    },
+                    {
+                      "name": "Line Format",
+                      "expression": "`Line Format`"
+                    },
+                    {
+                      "name": "Account Group",
+                      "expression": "`Account Group`"
+                    },
+                    {
+                      "name": "Account Category",
+                      "expression": "`Account Category`"
+                    },
+                    {
+                      "name": "Account Name",
+                      "expression": "`Account Name`"
+                    },
+                    {
+                      "name": "measure(Actual Amount)",
+                      "expression": "MEASURE(`Actual Amount`)"
+                    },
+                    {
+                      "name": "measure(Budget Amount)",
+                      "expression": "MEASURE(`Budget Amount`)"
+                    },
+                    {
+                      "name": "measure(Variance)",
+                      "expression": "MEASURE(`Variance`)"
+                    },
+                    {
+                      "name": "measure(Variance Pct)",
+                      "expression": "MEASURE(`Variance Pct`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Account Hierarchy Detail"
+              },
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "Report Section"
+                  },
+                  {
+                    "fieldName": "Line Format"
+                  },
+                  {
+                    "fieldName": "Account Group"
+                  },
+                  {
+                    "fieldName": "Account Category"
+                  },
+                  {
+                    "fieldName": "Account Name"
+                  },
+                  {
+                    "fieldName": "measure(Actual Amount)"
+                  },
+                  {
+                    "fieldName": "measure(Budget Amount)"
+                  },
+                  {
+                    "fieldName": "measure(Variance)"
+                  },
+                  {
+                    "fieldName": "measure(Variance Pct)"
+                  }
+                ]
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 8,
+            "width": 12,
+            "height": 8
+          }
+        },
+        {
+          "widget": {
+            "name": "pie_section",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "measure(Actual Amount)",
+                      "expression": "MEASURE(`Actual Amount`)"
+                    },
+                    {
+                      "name": "Report Section",
+                      "expression": "`Report Section`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Spend Distribution by Report Section"
+              },
+              "version": 3,
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "measure(Actual Amount)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "Actual Amount"
+                },
+                "color": {
+                  "fieldName": "Report Section",
+                  "displayName": "Report Section",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 16,
+            "width": 12,
+            "height": 5
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "budget_variance",
+      "displayName": "Budget Variance Analysis",
+      "layout": [
+        {
+          "widget": {
+            "name": "header",
+            "multilineTextboxSpec": {
+              "lines": [
+                "## Budget Variance Analysis\n",
+                "Identify over- and under-budget areas. Positive variance = under budget (favorable). Filter by business unit and quarter to drill into specifics."
+              ]
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_bu",
+            "queries": [
+              {
+                "name": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Business Unit",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Business Unit",
+                      "expression": "`Business Unit`"
+                    },
+                    {
+                      "name": "Business Unit_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Business Unit"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "Business Unit",
+                    "queryName": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Business Unit"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 3,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_fq",
+            "queries": [
+              {
+                "name": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Quarter",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Fiscal Quarter",
+                      "expression": "`Fiscal Quarter`"
+                    },
+                    {
+                      "name": "Fiscal Quarter_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Fiscal Quarter"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "Fiscal Quarter",
+                    "queryName": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Quarter"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 1,
+            "width": 3,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_fy",
+            "queries": [
+              {
+                "name": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Year",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Fiscal Year",
+                      "expression": "`Fiscal Year`"
+                    },
+                    {
+                      "name": "Fiscal Year_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Fiscal Year"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "Fiscal Year",
+                    "queryName": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Year"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 1,
+            "width": 3,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_variance",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Account Group",
+                      "expression": "`Account Group`"
+                    },
+                    {
+                      "name": "measure(Variance)",
+                      "expression": "MEASURE(`Variance`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Variance by Account Group"
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Account Group",
+                  "displayName": "Account Group",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Variance)",
+                  "displayName": "Variance",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Account Group",
+                  "displayName": "Account Group",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 2,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "bar_variance_bu",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Account Group",
+                      "expression": "`Account Group`"
+                    },
+                    {
+                      "name": "Business Unit",
+                      "expression": "`Business Unit`"
+                    },
+                    {
+                      "name": "measure(Variance)",
+                      "expression": "MEASURE(`Variance`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Variance by Business Unit"
+              },
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "Business Unit",
+                  "displayName": "Business Unit",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "measure(Variance)",
+                  "displayName": "Variance",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "Account Group",
+                  "displayName": "Account Group",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 2,
+            "width": 6,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "table_variance",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Account Group",
+                      "expression": "`Account Group`"
+                    },
+                    {
+                      "name": "Account Category",
+                      "expression": "`Account Category`"
+                    },
+                    {
+                      "name": "Business Unit",
+                      "expression": "`Business Unit`"
+                    },
+                    {
+                      "name": "measure(Actual Amount)",
+                      "expression": "MEASURE(`Actual Amount`)"
+                    },
+                    {
+                      "name": "measure(Budget Amount)",
+                      "expression": "MEASURE(`Budget Amount`)"
+                    },
+                    {
+                      "name": "measure(Variance)",
+                      "expression": "MEASURE(`Variance`)"
+                    },
+                    {
+                      "name": "measure(Variance Pct)",
+                      "expression": "MEASURE(`Variance Pct`)"
+                    },
+                    {
+                      "name": "measure(Transaction Count)",
+                      "expression": "MEASURE(`Transaction Count`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Variance Detail by Account Category"
+              },
+              "version": 2,
+              "widgetType": "table",
+              "encodings": {
+                "columns": [
+                  {
+                    "fieldName": "Account Group"
+                  },
+                  {
+                    "fieldName": "Account Category"
+                  },
+                  {
+                    "fieldName": "Business Unit"
+                  },
+                  {
+                    "fieldName": "measure(Actual Amount)"
+                  },
+                  {
+                    "fieldName": "measure(Budget Amount)"
+                  },
+                  {
+                    "fieldName": "measure(Variance)"
+                  },
+                  {
+                    "fieldName": "measure(Variance Pct)"
+                  },
+                  {
+                    "fieldName": "measure(Transaction Count)"
+                  }
+                ]
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 8,
+            "width": 12,
+            "height": 8
+          }
+        },
+        {
+          "widget": {
+            "name": "pivot_variance",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Account Group",
+                      "expression": "`Account Group`"
+                    },
+                    {
+                      "name": "Fiscal Quarter",
+                      "expression": "`Fiscal Quarter`"
+                    },
+                    {
+                      "name": "measure(Variance Pct)",
+                      "expression": "MEASURE(`Variance Pct`)"
+                    }
+                  ],
+                  "cubeGroupingSets": {
+                    "sets": [
+                      {
+                        "fieldNames": [
+                          "Account Group"
+                        ]
+                      },
+                      {
+                        "fieldNames": [
+                          "Fiscal Quarter"
+                        ]
+                      }
+                    ]
+                  },
+                  "disaggregated": false,
+                  "orders": [
+                    {
+                      "direction": "ASC",
+                      "expression": "`Account Group`"
+                    },
+                    {
+                      "direction": "ASC",
+                      "expression": "`Fiscal Quarter`"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Variance % by Account Group × Quarter"
+              },
+              "version": 3,
+              "widgetType": "pivot",
+              "encodings": {
+                "rows": [
+                  {
+                    "fieldName": "Account Group"
+                  }
+                ],
+                "columns": [
+                  {
+                    "fieldName": "Fiscal Quarter"
+                  }
+                ],
+                "cell": {
+                  "type": "single-cell",
+                  "fieldName": "measure(Variance Pct)",
+                  "cellType": "text"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 16,
+            "width": 12,
+            "height": 5
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    },
+    {
+      "name": "hierarchy_drilldown",
+      "displayName": "Hierarchy Drill-Down",
+      "layout": [
+        {
+          "widget": {
+            "name": "pivot_hierarchy",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Business Unit",
+                      "expression": "`Business Unit`"
+                    },
+                    {
+                      "name": "Operating Region",
+                      "expression": "`Operating Region`"
+                    },
+                    {
+                      "name": "Account Group",
+                      "expression": "`Account Group`"
+                    },
+                    {
+                      "name": "Account Category",
+                      "expression": "`Account Category`"
+                    },
+                    {
+                      "name": "Account Name",
+                      "expression": "`Account Name`"
+                    },
+                    {
+                      "name": "measure(Actual Amount)",
+                      "expression": "MEASURE(`Actual Amount`)"
+                    },
+                    {
+                      "name": "measure(Budget Amount)",
+                      "expression": "MEASURE(`Budget Amount`)"
+                    },
+                    {
+                      "name": "measure(Variance)",
+                      "expression": "MEASURE(`Variance`)"
+                    },
+                    {
+                      "name": "measure(Variance Pct)",
+                      "expression": "MEASURE(`Variance Pct`)"
+                    }
+                  ],
+                  "cubeGroupingSets": {
+                    "sets": [
+                      {
+                        "fieldNames": [
+                          "Business Unit",
+                          "Operating Region",
+                          "Account Group",
+                          "Account Category",
+                          "Account Name"
+                        ]
+                      },
+                      {}
+                    ]
+                  },
+                  "disaggregated": false,
+                  "orders": [
+                    {
+                      "direction": "ASC",
+                      "expression": "`Business Unit`"
+                    },
+                    {
+                      "direction": "ASC",
+                      "expression": "`Operating Region`"
+                    },
+                    {
+                      "direction": "ASC",
+                      "expression": "`Account Group`"
+                    },
+                    {
+                      "direction": "ASC",
+                      "expression": "`Account Category`"
+                    },
+                    {
+                      "direction": "ASC",
+                      "expression": "`Account Name`"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "frame": {
+                "showTitle": true,
+                "title": "Financial Hierarchy Drill-Down"
+              },
+              "version": 4,
+              "widgetType": "pivot",
+              "encodings": {
+                "rows": {
+                  "fields": [
+                    {
+                      "fieldName": "Business Unit",
+                      "scale": {
+                        "type": "categorical"
+                      }
+                    },
+                    {
+                      "fieldName": "Operating Region",
+                      "scale": {
+                        "type": "categorical"
+                      }
+                    },
+                    {
+                      "fieldName": "Account Group",
+                      "scale": {
+                        "type": "categorical"
+                      }
+                    },
+                    {
+                      "fieldName": "Account Category",
+                      "scale": {
+                        "type": "categorical"
+                      }
+                    },
+                    {
+                      "fieldName": "Account Name",
+                      "scale": {
+                        "type": "categorical"
+                      }
+                    }
+                  ]
+                },
+                "columns": {
+                  "fields": []
+                },
+                "cells": {
+                  "fields": [
+                    {
+                      "fieldName": "measure(Actual Amount)",
+                      "cellType": "text"
+                    },
+                    {
+                      "fieldName": "measure(Budget Amount)",
+                      "cellType": "text"
+                    },
+                    {
+                      "fieldName": "measure(Variance)",
+                      "cellType": "text"
+                    },
+                    {
+                      "fieldName": "measure(Variance Pct)",
+                      "cellType": "text"
+                    }
+                  ],
+                  "displayAs": "rows"
+                }
+              },
+              "data": {
+                "queryName": "main_query"
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 1,
+            "width": 12,
+            "height": 14
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_fy",
+            "queries": [
+              {
+                "name": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Year",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Fiscal Year",
+                      "expression": "`Fiscal Year`"
+                    },
+                    {
+                      "name": "Fiscal Year_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Fiscal Year"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "Fiscal Year",
+                    "queryName": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Year"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 3,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_fq",
+            "queries": [
+              {
+                "name": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Quarter",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Fiscal Quarter",
+                      "expression": "`Fiscal Quarter`"
+                    },
+                    {
+                      "name": "Fiscal Quarter_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Fiscal Quarter"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "Fiscal Quarter",
+                    "queryName": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Fiscal Quarter"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 3,
+            "y": 0,
+            "width": 3,
+            "height": 1
+          }
+        },
+        {
+          "widget": {
+            "name": "filter_bu",
+            "queries": [
+              {
+                "name": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Business Unit",
+                "query": {
+                  "datasetName": "mv_financial_rollup",
+                  "fields": [
+                    {
+                      "name": "Business Unit",
+                      "expression": "`Business Unit`"
+                    },
+                    {
+                      "name": "Business Unit_associativity",
+                      "expression": "COUNT_IF(`associative_filter_predicate_group`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 2,
+              "frame": {
+                "showTitle": true,
+                "title": "Business Unit"
+              },
+              "widgetType": "filter-multi-select",
+              "encodings": {
+                "fields": [
+                  {
+                    "fieldName": "Business Unit",
+                    "queryName": "dashboards/01f1c27e0c7214dd8a592d817abf97a8/datasets/01f1c27e30cf15ee8fe561e5c8918a4d_Business Unit"
+                  }
+                ]
+              }
+            }
+          },
+          "position": {
+            "x": 6,
+            "y": 0,
+            "width": 3,
+            "height": 1
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
